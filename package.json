@@ -1,0 +1,12 @@
+{
+    "name": "portfolio",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "bootstrap-icons": "^1.11.2",
+        "express": "^4.17.1"
+    }
+}
