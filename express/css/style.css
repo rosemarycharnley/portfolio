@@ -2684,11 +2684,12 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(11, 206, 175, 0.5);
+  box-shadow: 0 0 0 0.2rem #556B2F;
 }
 
 .btn-outline-primary.disabled, .btn-outline-primary:disabled {
   color: #FFA07A;
+  border-color: #FFA07A;
   background-color: transparent;
 }
 

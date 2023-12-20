@@ -380,33 +380,39 @@
                 <div class="col-lg-8">
                     <div class="contact-form text-center">
                         <div id="success"></div>
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate" action="contact.php">
-                            <div class="form-row">
+                        <form class="gform" method="POST" action="https://script.google.com/macros/s/AKfycbz05v8xbtW9581woCVXmLRlH1k0SaJrLJlj9SxhMKXWiUG_bSpqAA9dtvrk0vw9u8NE/exec">
+                            <div class="alert alert-success" style="display:none;">
+                                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                                <strong>Your message has been sent. </strong>
+                            </div>
+                            <div class="form-row for-elements">
                                 <div class="control-group col-sm-6">
-                                    <input type="text" class="form-control p-4" id="name" placeholder="Your Name"
+                                    <fieldset>
+                                        <input type="text" class="form-control p-4" id="name" name="name" placeholder="Your Name"
                                         required="required" data-validation-required-message="Please enter your name" />
+                                    </fieldset>
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="control-group col-sm-6">
-                                    <input type="email" class="form-control p-4" id="email" placeholder="Your Email"
+                                    <fieldset>
+                                        <input type="email" class="form-control p-4" id="email" name="email" placeholder="Your Email"
                                         required="required" data-validation-required-message="Please enter your email" />
+                                    </fieldset>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <input type="text" class="form-control p-4" id="subject" placeholder="Subject"
-                                    required="required" data-validation-required-message="Please enter a subject" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="control-group">
-                                <textarea class="form-control py-3 px-4" rows="5" id="message" placeholder="Message"
+                                <fieldset>
+                                    <textarea class="form-control py-3 px-4" rows="5" id="message" name="message" placeholder="Message"
                                     required="required"
                                     data-validation-required-message="Please enter your message"></textarea>
+                                </fieldset>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div>
                                 <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Send
                                     Message</button>
+                            </div>
                             </div>
                         </form>
                     </div>
@@ -426,6 +432,9 @@
         </div>
     </div>
     <!-- Footer End -->
+
+    <!-- Submit the Form to Google Using "AJAX" -->
+    <script data-cfasync="false" src="mail/form-submission-handler.js"></script>
 
     <!-- Scroll to Bottom -->
     <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
