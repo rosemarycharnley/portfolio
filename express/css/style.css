@@ -184,7 +184,6 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
-  -ms-overflow-style: scrollbar;
 }
 
 figure {
@@ -368,6 +367,10 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .fa-calendar {
+  color:#FFA07A
+}
+
+.fa-bars {
   color:#FFA07A
 }
 
@@ -4110,12 +4113,15 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-  position: center;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-flow: row wrap;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+}
+
+.navbar::after {
+  content: "";
+  flex: auto;
 }
 
 .navbar .container,
