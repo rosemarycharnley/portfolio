@@ -1,20 +1,31 @@
 <?php
-if(empty($_POST['name']) || empty($_POST['subject']) || empty($_POST['message']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-  http_response_code(500);
-  exit();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = strip_tags(trim($_POST["name"]));
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+    $message = strip_tags(trim($_POST["message"]));
+
+    if (empty($name) || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($message)) {
+        // Handle error here
+        echo "Invalid input!";
+        exit;
+    }
+
+    $recipient = "rcharnley16@gmail.com"; 
+    $subject = "New contact from $name";
+
+    $email_content = "Name: $name\n";
+    $email_content .= "Email: $email\n\n";
+    $email_content .= "Message:\n$message\n";
+
+    $email_headers = "From: $name <$email>";
+
+    if (mail($recipient, $subject, $email_content, $email_headers)) {
+        echo "Thank You! Your message has been sent.";
+    } else {
+        echo "Oops! Something went wrong and we couldn't send your message.";
+    }
+} else {
+    // Not a POST request, handle error
+    echo "Error: Invalid request.";
 }
-
-$name = strip_tags(htmlspecialchars($_POST['name']));
-$email = strip_tags(htmlspecialchars($_POST['email']));
-$m_subject = strip_tags(htmlspecialchars($_POST['subject']));
-$message = strip_tags(htmlspecialchars($_POST['message']));
-
-$to = "rcharnley16@gmail.com";
-$subject = "$m_subject:  $name";
-$body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\n\nEmail: $email\n\nSubject: $m_subject\n\nMessage: $message";
-$header = "From: $email";
-$header .= "Reply-To: $email";	
-
-if(mail($to, $subject, $body, $header))
-  http_response_code(500);
 ?>
